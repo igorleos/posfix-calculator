@@ -3,9 +3,9 @@
 #include "pilha.h"
 
 void criaPilhaVazia(pilha *s) {
-    s->topo = NULL;
+    s->topo = malloc(sizeof(Nodo));
     s->fundo = s->topo;
-    // s->topo->prox = NULL;
+    s->topo->prox = NULL;
 }
 
 int pilhaVazia ( pilha * s) {
@@ -14,19 +14,9 @@ int pilhaVazia ( pilha * s) {
 
 void empilha(pilha *s, char x) {
     Nodo *novo = malloc(sizeof(Nodo));
-    novo->item = x;
-    if(s->topo == NULL){
-        novo->prox = NULL;
-        s->topo = novo;
-    }
-    else{
-        novo->prox = s->topo;
-        s->topo = novo;
-    }
-    // novo->prox = s->topo;
-    // s->topo->item = x ;
-    // s->topo = novo ;
-    printf("");
+    novo->prox = s->topo;
+    s->topo->item = x ;
+    s->topo = novo ;
 }
 
 char desempilha(pilha *s) {
@@ -36,8 +26,7 @@ char desempilha(pilha *s) {
     else {
         Nodo *aux = s->topo;
         s->topo = aux->prox ;
-        aux->prox = NULL;
-        item = aux->item ;
+        item = aux->prox->item ;
         free(aux) ;
     }
     return item ;

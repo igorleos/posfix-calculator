@@ -68,15 +68,15 @@ void shouldMoveExpressionBetweenParenthesis(pilha* stack, lista* list){
 }
 
 void shouldMoveGreaterPrecendenceOrStack(Nodo* currentNode, pilha* stack, lista* list){
-    if(stack->topo == NULL){
-        empilha(stack, currentNode->item);
-    }else{
+    // if(stack->topo == NULL){
+    //     empilha(stack, currentNode->item);
+    // }else{
         while(precedenceOrder(stack->topo->item) >= precedenceOrder(currentNode->item)){
             char removedItem = desempilha(stack);
             inserirFinal(list, removedItem);
         }
         empilha(stack, currentNode->item);
-    }
+    // }
 }
 
 void shouldMoveRestOfStack(pilha* stack, lista* list){
