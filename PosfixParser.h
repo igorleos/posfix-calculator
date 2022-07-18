@@ -4,7 +4,7 @@
 #include "lista.h"
 #define CHAR_LENGTH_LIMIT 100
 
-int infixToPosfix(char* infix);
+void infixToPosfix(char* infix);
 void fillInfixList(char string[], lista* list);
 void doParsing(lista* infixList, lista* posfixList);
 

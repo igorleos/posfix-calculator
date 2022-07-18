@@ -1,29 +1,28 @@
 #!/bin/bash
 
-function compile_parser {
+function link_files {
     gcc -Wall -Wextra -std=c11 -c Lista.c -g
 
     gcc -Wall -Wextra -std=c11 -c Pilha.c -g
 
     gcc -Wall -Wextra -std=c11 -c PosfixParser.c -g
 
+    gcc -Wall -Wextra -std=c11 -c PosfixCalculator.c -g
+
     gcc -Wall -Wextra -std=c11 -c RunParser.c -g
 
+    gcc -Wall -Wextra -std=c11 -c RunCalculator.c -g
+}
+
+function compile_parser {
     gcc Lista.o Pilha.o PosfixParser.o RunParser.o -g
 }
 
-function parse {
-    gcc -Wall -Wextra -std=c11 -c Lista.c -g
+function compile_calculator {
+    gcc Lista.o Pilha.o PosfixCalculator.o RunCalculator.o -g
+}
 
-    gcc -Wall -Wextra -std=c11 -c Pilha.c -g
-
-    gcc -Wall -Wextra -std=c11 -c PosfixParser.c -g
-
-    gcc -Wall -Wextra -std=c11 -c RunParser.c -g
-
-    gcc Lista.o Pilha.o PosfixParser.o RunParser.o -g
-
-    echo -e "\n\n\n\n\n\n\n\n====================";
+function run_code {
 
     if [[ "$OSTYPE" == "linux-gnu"* || "$OSTYPE" == "darwin"* ]]
     then
@@ -40,6 +39,17 @@ function parse {
     fi
 }
 
+function parse {
+    link_files
+    compile_parser
+    run_code "$1"
+}
+
+function calculate {
+    link_files
+    compile_calculator
+    run_code "$1"
+}
 
 
 

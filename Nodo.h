@@ -3,6 +3,7 @@
 
 typedef struct Nodo_t {
     char item;
+    long double longItem;
     struct Nodo_t *prox;
 } Nodo;
 

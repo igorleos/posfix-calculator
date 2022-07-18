@@ -75,7 +75,7 @@ char removerInicio(lista * l) {
 
 char removerFinal(lista *l) {
     char x = -1;
-    Nodo *aux , *anterior;
+    Nodo *aux = NULL , *anterior  = NULL;
     if ( listaVazia(l))
         printf("Lista Vazia\n");
     else if (l->primeiro == l->ultimo) {

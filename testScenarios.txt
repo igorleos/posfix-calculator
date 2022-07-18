@@ -1,0 +1,22 @@
+5*(2-3)^2
+523-2^*
+
+(5*(2-3))^2
+523-*2^
+
+(A+B)*C
+AB+C*
+
+((1+2)*4)+3
+12+4*3+
+
+5+((1+2)*4)*3
+512+4*3*+
+
+5+((1+2)*4)−3
+512+4*+3−       //result 512+4*3+ 
+
+                verificar alg de calculo (tinha o msm problema)
+((1+2)*4)-3     caractere "-" não é interpretado, mas 45 (ascii equival) sim.
+12+4*3-         //result 12+4*3
+

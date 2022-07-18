@@ -7,8 +7,7 @@
 #include "PosfixParser.h"
 
 
-int infixToPosfix(char* infix) {
-    //, char* posfix
+void infixToPosfix(char* infix) {
     lista infixList;
     lista posfixList;
     char expresssion[CHAR_LENGTH_LIMIT+1];
@@ -35,6 +34,10 @@ void doParsing(lista* infixList, lista* posfixList){
     Nodo *aux = infixList->primeiro;
 
     while (aux != NULL) {
+        printf("\npilha:\n");
+        imprimirPilha(&opstack);        
+        printf("\nlista:\n");
+        imprimirLista(posfixList);
         if (isOperand(aux->item) == 1){
             inserirFinal(posfixList, aux->item);
         }
@@ -55,7 +58,7 @@ void doParsing(lista* infixList, lista* posfixList){
 
 void fillInfixList(char string[], lista* list){
     int i = 0;
-    while (string[i] != NULL) {
+    while (string[i] != '\0') {
         inserirFinal(list, string[i]);
         i++;
     }
@@ -122,10 +125,10 @@ int isOperator(char c){
 
 void clearLists(lista* infixList, lista* posfixList){
     while (!listaVazia(infixList)) {
-       char i = removerInicio(infixList);
+       removerInicio(infixList);
     }
     while (!listaVazia(posfixList)) {
-       char i = removerInicio(posfixList);
+       removerInicio(posfixList);
     }
     apagarLista(infixList);
     apagarLista(posfixList);
@@ -133,7 +136,7 @@ void clearLists(lista* infixList, lista* posfixList){
 
 void clearStackAndNode(pilha* stack, Nodo* auxNode){
     while (!pilhaVazia(stack)) {
-        char i = desempilha(stack);
+        desempilha(stack);
     }
     apagaPilha(stack);
     free(auxNode);
