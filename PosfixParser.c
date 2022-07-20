@@ -73,9 +73,12 @@ void shouldMoveExpressionBetweenParenthesis(pilha* stack, lista* list){
 }
 
 void shouldMoveGreaterPrecendenceOrStack(Nodo* currentNode, pilha* stack, lista* list){
-    while(precedenceOrder(stack->topo->item) >= precedenceOrder(currentNode->item)){
+    char stackFirstItem = (stack->topo->prox == NULL)? "" : stack->topo->prox->item;
+
+    while(precedenceOrder(stackFirstItem) >= precedenceOrder(currentNode->item)){
         char removedItem = desempilha(stack);
         inserirFinal(list, removedItem);
+        stackFirstItem = (stack->topo->prox == NULL)? "" : stack->topo->prox->item;
     }
     empilha(stack, currentNode->item);
 }

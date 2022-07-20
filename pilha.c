@@ -4,6 +4,7 @@
 
 void criaPilhaVazia(pilha *s) {
     s->topo = malloc(sizeof(Nodo));
+    s->topo->item = NULL;
     s->fundo = s->topo;
     s->topo->prox = NULL;
 }
